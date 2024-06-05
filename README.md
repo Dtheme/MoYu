@@ -1,5 +1,5 @@
 # MoYu-2048
- A command-line implementation of the 2048 game in Python
+ 无聊，娱乐一下
 
 使用方法：
 1. 依赖`readchar`，`pip install readchar`
