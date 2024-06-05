@@ -8,6 +8,7 @@ Author: AaronDuan
 Date: June 2024
 Description: MoYu version 2048， A command-line implementation of the 2048 game in Python .
 """
+
 class Game2048:
     def __init__(self):
         self.board = [[0] * 4 for _ in range(4)]
@@ -22,7 +23,7 @@ class Game2048:
             self.board[r][c] = random.choice([2, 4])
 
     def print_board(self):
-        os.system('clear')
+        os.system('cls' if os.name == 'nt' else 'clear')
         print(f"Score: {self.score}")
         for row in self.board:
             print('+----' * 4 + '+')
@@ -108,6 +109,7 @@ def main():
             print("Game Over! No more moves available.")
             break
         print("Use arrow keys to move. Commands: 2048 -c (continue), 2048 -r (restart), 2048 -q (quit)")
+        
         move = readchar.readkey()
         if move == '\x1b[A':  # Up arrow
             game.move('up')
@@ -117,14 +119,14 @@ def main():
             game.move('right')
         elif move == '\x1b[D':  # Left arrow
             game.move('left')
-        elif move == '2048 -c':
+        elif move == 'c':
             args.continue_game = True
-        elif move == '2048 -r':
+        elif move == 'r':
             game = Game2048()
-        elif move == '2048 -q':
+        elif move == 'q':
             break
         else:
-            print("Invalid input! Please use arrow keys for moves or '2048 -c', '2048 -r', '2048 -q' for commands.")
+            print("Invalid input! Please use arrow keys for moves or 'c', 'r', 'q' for commands.")
 
 if __name__ == "__main__":
     main()
