@@ -6,7 +6,7 @@ import readchar
 2048 Game
 Author: AaronDuan
 Date: June 2024
-Description: MoYu version 2048， A command-line implementation of the 2048 game in Python .
+Description: 2048 MoYu version， A command-line implementation of the 2048 game in Python.
 """
 
 class Game2048:
