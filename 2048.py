@@ -108,7 +108,7 @@ def main():
         if not game.can_move():
             print("Game Over! No more moves available.")
             break
-        print("Use arrow keys to move. Commands: 2048 -c (continue), 2048 -r (restart), 2048 -q (quit)")
+        print("Use arrow keys to move. Commands:  -c (continue),  -r (restart),  -q (quit)")
         
         move = readchar.readkey()
         if move == '\x1b[A':  # Up arrow
