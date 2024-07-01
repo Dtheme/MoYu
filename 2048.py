@@ -2,6 +2,7 @@ import random
 import os
 import argparse
 import readchar
+
 """
 2048 Game
 Author: AaronDuan
@@ -85,6 +86,16 @@ class Game2048:
     def is_won(self):
         return any(any(num == 2048 for num in row) for row in self.board)
 
+    def print_game_over(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(f"Score: {self.score}")
+        for row in self.board:
+            print('+----' * 4 + '+')
+            print(''.join(f'|{num:^4}' if num > 0 else '|    ' for num in row) + '|')
+        print('+----' * 4 + '+')
+        print("\nWithout accumulating small steps, one cannot reach a thousand miles; without accumulating small streams, one cannot form a vast river.\n")
+        print("Game Over! No more moves available.")
+
 def main():
     parser = argparse.ArgumentParser(description='2048 Game')
     parser.add_argument('-c', '--continue_game', action='store_true', help='Continue playing after reaching 2048')
@@ -106,7 +117,7 @@ def main():
             print("Congratulations! You've reached 2048!")
             break
         if not game.can_move():
-            print("Game Over! No more moves available.")
+            game.print_game_over()
             break
         print("Use arrow keys to move. Commands:  -c (continue),  -r (restart),  -q (quit)")
         

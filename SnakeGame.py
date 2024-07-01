@@ -1,5 +1,6 @@
 import sys
 import random
+import textwrap
 import time
 
 try:
@@ -26,6 +27,7 @@ def main(stdscr):
         curses.start_color()
         curses.use_default_colors()  # Use terminal default colors
         curses.init_pair(1, curses.COLOR_WHITE, -1)  # -1 for default background color
+        curses.init_pair(2, -1, -1)  # Same as background color
 
         # Set the background color
         w.bkgd(' ', curses.color_pair(1))
@@ -85,10 +87,15 @@ def main(stdscr):
                 w.clear()
                 w.addstr(sh // 2, sw // 2 - len("Game Over!") // 2, "Game Over!", curses.color_pair(1))
                 w.addstr(sh // 2 + 1, sw // 2 - len(f"Score: {score}") // 2, f"Score: {score}", curses.color_pair(1))
-                w.refresh()
-                time.sleep(2)
-                curses.endwin()
-                quit()
+                w.addstr(sh // 2 + 2, sw // 2 - len("Press 'SPACE' to restart or 'q' to quit") // 2, "Press 'SPACE' to restart or 'q' to quit", curses.color_pair(1))
+                display_final_message(w, sh, sw)
+                while True:
+                    restart_key = w.getch()
+                    if restart_key == ord(' '):
+                        return True
+                    elif restart_key == ord('q'):
+                        curses.endwin()
+                        quit()
 
             if next_key == ord(' '):
                 paused = not paused
@@ -116,7 +123,7 @@ def main(stdscr):
                 w.addstr(sh // 2, sw // 2 - len("Game Over!") // 2, "Game Over!", curses.color_pair(1))
                 w.addstr(sh // 2 + 1, sw // 2 - len(f"Score: {score}") // 2, f"Score: {score}", curses.color_pair(1))
                 w.addstr(sh // 2 + 2, sw // 2 - len("Press 'SPACE' to restart or 'q' to quit") // 2, "Press 'SPACE' to restart or 'q' to quit", curses.color_pair(1))
-                w.refresh()
+                display_final_message(w, sh, sw)
                 while True:
                     restart_key = w.getch()
                     if restart_key == ord(' '):
@@ -142,7 +149,7 @@ def main(stdscr):
                 w.addstr(sh // 2, sw // 2 - len("Game Over!") // 2, "Game Over!", curses.color_pair(1))
                 w.addstr(sh // 2 + 1, sw // 2 - len(f"Score: {score}") // 2, f"Score: {score}", curses.color_pair(1))
                 w.addstr(sh // 2 + 2, sw // 2 - len("Press 'SPACE' to restart or 'q' to quit") // 2, "Press 'SPACE' to restart or 'q' to quit", curses.color_pair(1))
-                w.refresh()
+                display_final_message(w, sh, sw)
                 while True:
                     restart_key = w.getch()
                     if restart_key == ord(' '):
@@ -174,10 +181,10 @@ def main(stdscr):
                 else:
                     # Victory condition
                     w.clear()
-                    w.addstr(sh // 2, sw // 2 - len("🎉You Win! ヽ(･ω･´ﾒ)") // 2, "You Win!", curses.color_pair(1))
+                    w.addstr(sh // 2, sw // 2 - len("You Win!") // 2, "You Win!", curses.color_pair(1))
                     w.addstr(sh // 2 + 1, sw // 2 - len(f"Final Score: {score}") // 2, f"Final Score: {score}", curses.color_pair(1))
                     w.addstr(sh // 2 + 2, sw // 2 - len("Press 'SPACE' to restart or 'q' to quit") // 2, "Press 'SPACE' to restart or 'q' to quit", curses.color_pair(1))
-                    w.refresh()
+                    display_final_message(w, sh, sw)
                     while True:
                         restart_key = w.getch()
                         if restart_key == ord(' '):
@@ -196,6 +203,17 @@ def main(stdscr):
             w.addch(int(snake[0][0]), int(snake[0][1]), curses.ACS_CKBOARD)
 
         curses.endwin()
+
+    def display_final_message(w, sh, sw):
+        message = ("The flowing water seems to pass away swiftly, yet it never truly goes away; "
+                   "the waxing and waning of the moon appears to change, yet ultimately, it neither increases nor diminishes. "
+                   "Observing things from the perspective of change, the universe seems to alter in an instant; "
+                   "but from the perspective of constancy, all things, including myself, are eternal and unchanging.")
+        wrapped_message = textwrap.fill(message, width=(sw * 2) // 3)
+        lines = wrapped_message.split('\n')
+        for i, line in enumerate(lines):
+            if 4 + i < sh:
+                w.addstr(4 + i, (sw - len(line)) // 2, line, curses.color_pair(2))
 
     while start_game():
         pass
