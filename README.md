@@ -1,6 +1,7 @@
 # MoYu-2048
  无聊，娱乐一下
 
+
 **使用方法：**
 1. 依赖`readchar`，`pip install readchar`
 2. 在终端中运行游戏：python3 2048.py
