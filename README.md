@@ -1,6 +1,11 @@
 # MoYu
- 无聊，娱乐一下
-下面使用方法以2048为例 其他demo类似 很简单 一般直接执行”python3 {gamename.py}“就可以玩 提示都有
+无聊，娱乐一下
+目前包含的游戏
+> 2048
+> 贪吃蛇
+
+
+文档以2048游戏为例 其他demo类似 很简单 一般直接执行”python3 {gamename.py}“就可以玩 提示都有
 
 **使用方法：**
 1. 依赖`readchar`，`pip install readchar`
