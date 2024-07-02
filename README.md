@@ -23,6 +23,7 @@
 > 平台：macOS 14.4.1
 > 
 > 终端：iterm2
+> 代码层面支持Windows终端，未经过严格测试
 
 
 ![试玩效果](https://github.com/Dtheme/MoYu-2048/assets/12546152/ff31df23-1b79-4d7a-9d89-49b89796341c)
