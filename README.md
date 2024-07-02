@@ -1,6 +1,7 @@
 # MoYu
-无聊，娱乐一下
-目前包含的游戏
+无聊，娱乐repo
+
+**目前包含的游戏**
 1. 2048(2048.py)
 2. 贪吃蛇(SnakeGame.py)
 3. 俄罗斯方块(Tetris.py)
@@ -23,7 +24,8 @@
 > 平台：macOS 14.4.1
 > 
 > 终端：iterm2
-> 代码层面支持Windows终端，未经过严格测试
+> 
+> 代码层面支持了Windows终端，但未过经严格测试
 
 
 ![试玩效果](https://github.com/Dtheme/MoYu-2048/assets/12546152/ff31df23-1b79-4d7a-9d89-49b89796341c)
