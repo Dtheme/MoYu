@@ -8,7 +8,7 @@
 
 **使用很简单：**
 1. clone仓库到本地
-2. `cd MoYu` 终端导航到**MoYu**文件假路径
+2. `cd ~/xx/MoYu` 终端导航到**MoYu**文件假路径
 3. `python3 gamename.py`执行脚本
 4. 如果提示缺少某个依赖，先`pip install xxxx`安装一下
 
