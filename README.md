@@ -5,9 +5,12 @@
 2. 贪吃蛇(SnakeGame.py)
 3. 俄罗斯方块(Tetris.py)
 
-文档以2048游戏为例 其他demo类似 很简单 一般直接执行”python3 {gamename.py}“就可以玩 提示都有
+使用很简单 一般直接执行”python3 {gamename.py}“就可以玩 提示都有
 
 **使用方法：**
+
+下面以2048游戏为例
+
 1. 依赖`readchar`，`pip install readchar`
 2. 在终端中运行游戏：python3 2048.py
 3. 游戏开始后，使用 ←, →, ↑, ↓ 进行上下左右移动方块。
