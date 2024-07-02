@@ -7,9 +7,10 @@
 3. 俄罗斯方块(Tetris.py)
 
 **使用很简单：**
-1. cd MoYu
-2. 直接执行”python3 gamename.py“就可以玩
-3. 如果提示缺少某个依赖，先pip install xxxx安装一下
+1. clone仓库到本地
+2. cd MoYu 终端导航到**MoYu**文件假路径
+3. python3 gamename.py执行脚本
+4. 如果提示缺少某个依赖，先pip install xxxx安装一下
 
 **以2048游戏为例：**
 1. 依赖`readchar`，`pip install readchar`
