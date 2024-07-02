@@ -3,7 +3,7 @@
 目前包含的游戏
 1. 2048(2048.py)
 2. 贪吃蛇(SnakeGame.py)
-
+3. 俄罗斯方块(Tetris.py)
 
 文档以2048游戏为例 其他demo类似 很简单 一般直接执行”python3 {gamename.py}“就可以玩 提示都有
 
