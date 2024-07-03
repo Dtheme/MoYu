@@ -5,6 +5,7 @@
 1. 2048(2048.py)
 2. 贪吃蛇(SnakeGame.py)
 3. 俄罗斯方块(Tetris.py)
+4. 打砖块（PongBrick.py）
 
 **使用很简单：**
 1. clone仓库到本地
