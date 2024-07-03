@@ -13,6 +13,11 @@ except ImportError:
     else:
         raise
 
+"""
+贪吃蛇
+Author: AaronDuan
+Date: June 2024
+"""
 def main(stdscr):
     # Function to start the game
     def start_game():

@@ -1,6 +1,12 @@
 import curses
 import random
 
+"""
+俄罗斯方块
+Author: AaronDuan
+Date: June 2024
+"""
+
 # Tetrimino shapes
 shapes = [
     [[1, 1, 1],
