@@ -70,13 +70,13 @@ class Tetris:
         for y, row in enumerate(self.board):
             for x, cell in enumerate(row):
                 if cell:
-                    self.screen.addstr(y + 1, x * 2 + 2, '[]')
+                    self.screen.addstr(y + 1, x * 2 + 2, '回')
 
     def draw_shape(self, shape, y, x):
         for row_y, row in enumerate(shape):
             for col_x, cell in enumerate(row):
                 if cell:
-                    self.screen.addstr(y + row_y + 1, (x + col_x) * 2 + 2, '[]')
+                    self.screen.addstr(y + row_y + 1, (x + col_x) * 2 + 2, '回')
 
     def draw_next_shape_preview(self):
         preview_y = 2
@@ -86,7 +86,7 @@ class Tetris:
             for row_y, row in enumerate(self.next_shape):
                 for col_x, cell in enumerate(row):
                     if cell:
-                        self.screen.addstr(preview_y + row_y + 1, preview_x + col_x * 2, '[]')
+                        self.screen.addstr(preview_y + row_y + 1, preview_x + col_x * 2, '回')
             self.screen.addstr(preview_y + 5, preview_x, f'Score: {self.score}')
 
     def can_move(self, shape, y, x):
