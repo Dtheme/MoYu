@@ -118,6 +118,18 @@ class Tetris:
         if self.can_move(new_shape, self.current_y, self.current_x):
             self.current_shape = new_shape
 
+    def drop_shape(self):
+        while self.can_move(self.current_shape, self.current_y + 1, self.current_x):
+            self.current_y += 1
+        self.freeze_shape()
+        self.current_shape = self.next_shape
+        self.next_shape = self.get_new_shape()
+        self.current_x = self.width // 2 - len(self.current_shape[0]) // 2
+        self.current_y = 0
+        self.draw_next_shape = True
+        if not self.can_move(self.current_shape, self.current_y, self.current_x):
+            self.game_over = True
+
     def play(self):
         while not self.game_over:
             if not self.paused:
@@ -126,24 +138,33 @@ class Tetris:
                 self.draw_board()
                 self.draw_shape(self.current_shape, self.current_y, self.current_x)
                 self.draw_next_shape_preview()
-                self.screen.addstr(0, 2, 'Use arrow keys to move, UP to rotate, SPACE to pause, Q to quit')
+                self.screen.addstr(0, 2, 'Use arrow keys to move, UP to rotate, DOWN to drop, SPACE to pause, Q to quit')
 
                 self.screen.refresh()
 
                 key = self.screen.getch()
+
+                # Handle lateral movement separately
                 if key == curses.KEY_LEFT and self.can_move(self.current_shape, self.current_y, self.current_x - 1):
                     self.current_x -= 1
                 elif key == curses.KEY_RIGHT and self.can_move(self.current_shape, self.current_y, self.current_x + 1):
                     self.current_x += 1
-                elif key == curses.KEY_DOWN and self.can_move(self.current_shape, self.current_y + 1, self.current_x):
-                    self.current_y += 1
+
+                # Handle rotation
                 elif key == curses.KEY_UP:
                     self.rotate_shape()
+
+                # Handle drop
+                elif key == curses.KEY_DOWN:
+                    self.drop_shape()
+
+                # Handle pause
                 elif key == ord(' '):
                     self.paused = not self.paused
                 elif key == ord('q'):
                     break
 
+                # Continue falling
                 if not self.can_move(self.current_shape, self.current_y + 1, self.current_x):
                     self.freeze_shape()
                     self.current_shape = self.next_shape
