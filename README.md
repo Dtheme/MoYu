@@ -6,7 +6,7 @@
 2. 贪吃蛇(SnakeGame.py)
 3. 俄罗斯方块(Tetris.py)
 4. 打砖块（PongBrick.py）
-
+5. 五子棋（GomokuGame）
 **使用很简单：**
 1. clone仓库到本地
 2. `cd ~/xx/MoYu` 终端导航到**MoYu**文件假路径
@@ -31,3 +31,5 @@
 
 
 ![试玩效果](https://github.com/Dtheme/MoYu-2048/assets/12546152/ff31df23-1b79-4d7a-9d89-49b89796341c)
+
+![五子棋试玩效果](../MoYu/gif/GomokuGame.gif)
