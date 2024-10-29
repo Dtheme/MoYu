@@ -32,4 +32,4 @@
 
 ![试玩效果](https://github.com/Dtheme/MoYu-2048/assets/12546152/ff31df23-1b79-4d7a-9d89-49b89796341c)
 
-![五子棋试玩效果](../MoYu/gif/GomokuGame.gif)
+![五子棋试玩效果](https://github.com/Dtheme/MoYu/blob/main/gif/GomokuGame.gif)
