@@ -59,7 +59,7 @@ class GomokuAI_v2:
         data = {
             'model': 'qwen-plus',
             'max_tokens': 100,
-            'temperature': 0.7,
+            'temperature': 0.9,
             'top_p': 0.9
         }
 
