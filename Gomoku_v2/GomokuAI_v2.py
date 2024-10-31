@@ -5,7 +5,7 @@ import json
 class GomokuAI_v2:
     def __init__(self):
         # 获取 API Key，若环境变量未设置则使用默认值 传入你的api-key到"your_api_key_here"，或者配置到环境变量“DASHSCOPE_API_KEY中
-        self.api_key = os.getenv("DASHSCOPE_API_KEY", "your_api_key_here")
+        self.api_key = os.getenv("DASHSCOPE_API_KEY", "your_sk-751c5c38f1d54c93839ba8674ff89acaapi_key_here")
 
         # 输出当前使用的 API Key（仅用于调试，请勿在生产环境中使用）
         print(f"Current API Key: {self.api_key}")
@@ -35,7 +35,14 @@ class GomokuAI_v2:
                 Summary of Gomoku Rules: Gomoku is a two-player strategic board game on a 15x15 grid. 
                 Players take turns placing one piece at a time on any unoccupied cell. 
                 The goal is to be the first to form an unbroken line of five of one's own pieces horizontally, vertically, or diagonally in the Board matrix.
-
+                 
+                suggestions:
+                - you can analyze board based on pruning algorithm, such as:
+                    - Minimax
+                    - TSS, Threat Space Search
+                    - Monte Carlo Tree Search
+                    - Limited Depth First Search or Local Depth First Search
+                - or use other algorithms to find the best move.
                 **Important:** 
                 Please return only the best move coordinates in the format `row, col`. 
                 Ensure that:

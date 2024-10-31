@@ -13,7 +13,19 @@ class GomokuAI:
         best_score = -float('inf')
         best_move = None
         search_depth = self.determine_depth(board)  # 动态调整深度
-        # 仅对棋盘上已有落子周围的空位进行评估
+        
+        # 提前优先评估能形成活四的落子点
+        for r in range(len(board)):
+            for c in range(len(board)):
+                if board[r][c] == 0 and self.has_nearby_pieces(board, r, c):
+                    board[r][c] = player
+                    # 检查是否立即能形成活四
+                    if self.is_immediate_threat(board, r, c, player):
+                        board[r][c] = 0
+                        return (r, c)
+                    board[r][c] = 0
+
+        # 继续常规搜索策略
         for r in range(len(board)):
             for c in range(len(board)):
                 if board[r][c] == 0 and self.has_nearby_pieces(board, r, c):
@@ -23,11 +35,18 @@ class GomokuAI:
                     if score > best_score:
                         best_score = score
                         best_move = (r, c)
+        
         return best_move if best_move else (None, None)
+
+    def is_immediate_threat(self, board, row, col, player):
+        """检测此位置是否形成活四"""
+        for dr, dc in [(1, 0), (0, 1), (1, 1), (1, -1)]:
+            if self.evaluate_direction(board, row, col, dr, dc, player) == self.scores["活四"]:
+                return True
+        return False
 
     def determine_depth(self, board):
         empty_cells = sum(row.count(0) for row in board)
-        # 如果空位较少，加大深度
         if empty_cells < 15:
             return 4
         elif empty_cells < 30:
@@ -48,7 +67,6 @@ class GomokuAI:
         if depth == 0 or self.is_terminal_node(board):
             return self.evaluate_board(board, player)
 
-        # 使用启发式搜索：仅评估邻近区域的可选落子点
         possible_moves = [
             (r, c) for r in range(len(board)) for c in range(len(board))
             if board[r][c] == 0 and self.has_nearby_pieces(board, r, c)
