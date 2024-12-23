@@ -7,6 +7,8 @@
 3. 俄罗斯方块(Tetris.py)
 4. 打砖块（PongBrick.py）
 5. 五子棋（GomokuGame）
+
+
 **使用很简单：**
 1. clone仓库到本地
 2. `cd ~/xx/MoYu` 终端导航到**MoYu**文件假路径
